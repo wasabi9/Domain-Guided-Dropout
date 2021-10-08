@@ -1,0 +1,2 @@
+model_checkpoint_path: "with_dropout.hd5"
+all_model_checkpoint_paths: "with_dropout.hd5"
