@@ -101,7 +101,7 @@ for epoch in range (1 , n_epochs + 1):
             loss = tf.add_n([ main_loss ] + model.losses) 
         gradients = tape.gradient (loss , model.trainable_variables)
         # the dropped out neurons of ff are not trained
-        gradients[-2] = gradients[-2]*m_i      
+        # gradients[-2] = gradients[-2]*m_i      
 
         optimizer.apply_gradients(zip(gradients , model.trainable_variables))
         mean_loss(loss) 
@@ -113,7 +113,7 @@ for epoch in range (1 , n_epochs + 1):
                 metric.reset_states() 
     print(" var_acc:",keras.metrics.SparseCategoricalAccuracy()(y_test,model.predict(x_test)).numpy())
 
-model.save_weights("with_dropout.hd5")
+model.save_weights("without_dropout.hd5")
 
 
 
